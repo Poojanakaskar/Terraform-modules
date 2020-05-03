@@ -19,6 +19,7 @@ stages:
       steps:
       - bash: echo Build SecondJob
 - stage: DevDeploy
+  dependsOn: Build
   jobs:
     - job: DevDeployJob 
       steps:
