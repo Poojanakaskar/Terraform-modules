@@ -15,27 +15,32 @@ stages:
       steps:
       - bash: echo Build FirstJob
       - bash: echo $(PipelineVar)
+      - bash: echo $(Build.BuildNumber)
+      - bash: echo $(Build.BuildId)
+      - bash: echo $(Build.SourceBranchName)
+      - bash: ls -R $(System.DefaultWorkingDirectory)
+      - bash: echo $(Build.ArtifactStaging)
   
     - job: SecondJob
       steps:
       - bash: echo Build SecondJob
-- stage: DevDeploy
-  variables: 
-    Enviornment: dev
-  dependsOn: Build
-  jobs:
-    - job: DevDeployJob 
-      steps:
-      - bash: echo DevDeployJob first
-      - bash: echo $(Enviornment)DeployJob
+# - stage: DevDeploy
+#   variables: 
+#     Enviornment: dev
+#   dependsOn: Build
+#   jobs:
+#     - job: DevDeployJob 
+#       steps:
+#       - bash: echo DevDeployJob first
+#       - bash: echo $(Enviornment)DeployJob
   
-    - job: DevDeployJobsecond
-      steps:
-      - bash: echo DevDeployJob second
-- stage: ProdDeploy
-  jobs:
-    - job: ThirdJob
-      steps:
-      - bash: echo Build ThirdJob
+#     - job: DevDeployJobsecond
+#       steps:
+#       - bash: echo DevDeployJob second
+# - stage: ProdDeploy
+#   jobs:
+#     - job: ThirdJob
+#       steps:
+#       - bash: echo Build ThirdJob
 
 
