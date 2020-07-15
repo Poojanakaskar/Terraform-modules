@@ -24,5 +24,5 @@ variable "preferred_backup_window" {
   default = ""
 }
 variable "availability_zones" {
-  default = []
+  default = ["us-east-1a"]
 }
